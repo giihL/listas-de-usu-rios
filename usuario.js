@@ -5,7 +5,7 @@ function fetchUsers(){
         fetch ('https://jsonplaceholder.typicode.com/users')
         .then((response) =>{
             if (!response.ok) {
-                reject ('Erro ao obter os daods da API'); // Rejeitar a promisse se houver error
+                reject ('Erro ao obter os dados da API'); // Rejeitar a promisse se houver error
             }
             return response.json(); // Converter a resposta para JSON
         })
@@ -18,6 +18,8 @@ function fetchUsers(){
     })
 }
 
+
+    
 // Consumindo a promise com then e cath
 
 fetchUsers()
@@ -29,23 +31,27 @@ fetchUsers()
         console.error('Erro:', error); // Exibe o erro, se houver
         });
 
-
-
-        function popularUsuarios(users){
-            users.forEach(usuario => {
-                userList.innerHTML = `
-                <p><strong>Nome:</strong> ${usuario.name}</p>
-                <p><strong>Email:</strong> ${usuario.email}</p>
-                <p><strong>Telefone:</strong> ${usuario.phone}</p>
-                <p><strong>Website:</strong> ${usuario.website}</p>
-                <p><strong>Empresa:</strong> ${usuario.company.name}</p>
-                
-            `
-            });
+        function popularUsuarios(users) { 
+            let userHTML = ''; 
+         
+            users.forEach(usuario => { 
+                userHTML +=  
+                <div> 
+                    <p><strong>Nome:</strong> ${usuario.name}</p> 
+                    <p><strong>Email:</strong> ${usuario.email}</p> 
+                    <p><strong>Telefone:</strong> ${usuario.phone}</p> 
+                    <p><strong>Website:</strong> ${usuario.website}</p> 
+                    <p><strong>Empresa:</strong> ${usuario.company.name}</p> 
+                    <p>-------------------------------------</p> 
+                </div> 
+            ; 
+            }); 
+         
+            userList.innerHTML = userHTML; 
+         
         }
-
         
         loadUsers.onclick = (() =>{
-            resultado.innerText = somarDoisValores()
+            userList.innerHTML = carregarUsuarios()
         
         })
