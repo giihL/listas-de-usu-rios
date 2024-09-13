@@ -36,14 +36,14 @@ fetchUsers()
          
             users.forEach(usuario => { 
                 userHTML +=  
-                <div> 
+                `<div> 
                     <p><strong>Nome:</strong> ${usuario.name}</p> 
                     <p><strong>Email:</strong> ${usuario.email}</p> 
                     <p><strong>Telefone:</strong> ${usuario.phone}</p> 
                     <p><strong>Website:</strong> ${usuario.website}</p> 
                     <p><strong>Empresa:</strong> ${usuario.company.name}</p> 
                     <p>-------------------------------------</p> 
-                </div> 
+                </div>` 
             ; 
             }); 
          
@@ -51,7 +51,15 @@ fetchUsers()
          
         }
         
-        loadUsers.onclick = (() =>{
-            userList.innerHTML = carregarUsuarios()
-        
-        })
+        loadUsers.onclick = (() =>{            
+            fetchUsers()
+             .then((users) =>{
+               console.log('Usuários:', users); 
+                      popularUsuarios(users)
+               })
+               .catch((error) =>{
+                    console.error('Erro:', error); // Exibe o erro, se houver
+               });
+                 
+           })
+         

@@ -1,7 +1,17 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
     font-family:  "Poppins", sans-serif;
+    background-color: #D3D3D3;
 }
 h1{
+   margin: 50px;
     text-align: center;
 }
+
+
 
